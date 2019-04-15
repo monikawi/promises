@@ -1,22 +1,25 @@
-function promiseAll(promises) {
+async function promiseAll(promises) {
   // Twój kod tu
-  return new Promise((resolve, reject) => {
-    let results = [];
-    let pending = promises.length;
-    for (let i = 0; i < promises.length; i++) {
-      promises[i].then(result => {
-        results[i] = result; 
-        pending--;
-        if (pending == 0) resolve(results);
-      }).catch(reject);
-    }
-    if (promises.length == 0) resolve(results);
+  let func = await new Promise((resolve, reject) => {
+  let results = [];
+  let pending = promises.length;
+  for (let i = 0; i < promises.length; i++) {
+    promises[i].then(result => {
+      results[i] = result; 
+      pending--;
+      if (pending == 0) resolve(results);
+    }).catch(reject);
+  }
+  if (promises.length == 0) resolve(results);
   });
+
+  return func;
 }
 
-function promiseRace(promises) {
+
+async function promiseRace(promises) {
   // Twój kod tu
-  return new Promise((resolve, reject) => {
+  let func = await new Promise((resolve, reject) => {
     for (let i = 0; i < promises.length; i++) {
       if (promises[i].then) {
         promises[i].then(resolve, reject);
@@ -25,6 +28,8 @@ function promiseRace(promises) {
       }
     }
   });
+
+  return func;
 }
 
 
