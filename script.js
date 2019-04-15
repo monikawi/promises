@@ -1,6 +1,6 @@
 async function promiseAll(promises) {
   // Twój kod tu
-  let func = await new Promise((resolve, reject) => {
+  const func = await new Promise((resolve, reject) => {
   let results = [];
   let pending = promises.length;
   for (let i = 0; i < promises.length; i++) {
@@ -19,7 +19,7 @@ async function promiseAll(promises) {
 
 async function promiseRace(promises) {
   // Twój kod tu
-  let func = await new Promise((resolve, reject) => {
+  const func = await new Promise((resolve, reject) => {
     for (let i = 0; i < promises.length; i++) {
       if (promises[i].then) {
         promises[i].then(resolve, reject);
