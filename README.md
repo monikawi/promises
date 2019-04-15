@@ -4,4 +4,4 @@
 
 ### Implementing own methods for Promise.all and Promise.race
 
-[Link]()
+
